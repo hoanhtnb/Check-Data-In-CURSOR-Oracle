@@ -12,6 +12,7 @@ SELECT *
   FROM users
  WHERE UPPER (user_name) = UPPER ('USER_NAME');
 Không nên sử dụng sử dụng toán tử not like, not in, <> với trường đánh index, partition
+
 -- khong nen su dung
 SELECT *
   FROM users
