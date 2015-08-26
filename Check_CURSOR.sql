@@ -9,7 +9,7 @@
 --Bla bla
 //=======================================================   
 */    
-IF (PV_REFCURSOR IS NULL) THEN
+IF (PV_REFCURSOR%ROWCOUNT = 0) THEN
 BEGIN
     OPEN pv_refcursor 
     FOR
