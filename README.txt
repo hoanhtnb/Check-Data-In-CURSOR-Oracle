@@ -49,3 +49,13 @@ SELECT c.owner, c.object_name, c.object_type, b.SID, b.serial#, b.status,
 – Câu lệnh kill session
 ALTER SYSTEM KILL SESSION 'sid,serial#';
 Trong đó: SID, Serial#: được lấy từ bảng v$session
+
+Mã hóa thủ tục, function trong database
+
+– Vấn đề: Với một số thủ tục, funcion cần bảo mật thông tin. Sau khi tạo ta cần mã hóa nội dung để người khác không xem được
+– Giải pháp: Sử dụng hàm mã hóa của oracle theo cú pháp
+
+BEGIN
+   SYS.DBMS_DDL.create_wrapped (str);
+END;
+– Trong đó: str là xâu chứa câu lệnh tạo thủ tục
