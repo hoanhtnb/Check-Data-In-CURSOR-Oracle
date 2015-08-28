@@ -46,12 +46,12 @@ SELECT c.owner, c.object_name, c.object_type, b.SID, b.serial#, b.status,
        || ''' IMMEDIATE;' AS kill_sta
   FROM v$locked_object a, v$session b, dba_objects c
  WHERE b.SID = a.session_id AND a.object_id = c.object_id;
+ ---------------------------------------------------------------------
 – Câu lệnh kill session
 ALTER SYSTEM KILL SESSION 'sid,serial#';
 Trong đó: SID, Serial#: được lấy từ bảng v$session
-
+-----------------------------------------------------
 Mã hóa thủ tục, function trong database
-
 – Vấn đề: Với một số thủ tục, funcion cần bảo mật thông tin. Sau khi tạo ta cần mã hóa nội dung để người khác không xem được
 – Giải pháp: Sử dụng hàm mã hóa của oracle theo cú pháp
 
@@ -59,3 +59,12 @@ BEGIN
    SYS.DBMS_DDL.create_wrapped (str);
 END;
 – Trong đó: str là xâu chứa câu lệnh tạo thủ tục
+-----------------------------------------------------------------------------------------------------------------------------
+Kiểm tra số ROWSCOUT sau khi bạn thực hiện Update, nói 1 cách khác là kiểm tra tổng số bản ghi bạn đã update dữ liệu trong bảng.
+declare
+dec_total number;
+begin
+update employees set status = 'ht' where name like '%htnb';
+dec_total := sql%rowcount;
+end;
+Tới đây bạn đã lấy được số bản ghi Update thông qua biến dec_total.
