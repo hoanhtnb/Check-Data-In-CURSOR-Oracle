@@ -1,8 +1,5 @@
 /*
 //=======================================================
-//https://github.com/hoanhtnb
-//Twitter: @hoangtronghoan
-//Facebook: facebook.com/ht.hoan
 
 --Muc dich de kiem tra neu CURSOR khong co du lieu ta se tra ve 1 dong trang
 --Rat nhieu truong hop ta can phai lam the
